@@ -26,7 +26,11 @@ do
     {
         case 1:
             evaluarContenido();
-            break;
+        break;
+
+        case 2:
+            mostrarReglas();
+        break;
 
     }
 } while (opcion != 5);
@@ -165,3 +169,25 @@ string CalcularImpacto(int duracion, int hora, int produccion)
         return "Bajo";
     }
 }
+
+void mostrarReglas()
+{
+    Console.WriteLine("REGLAS DE CLASIFICACION Y HORARIO");
+    Console.WriteLine("Todo público: cualquier hora");
+    Console.WriteLine("+13: entre 6 y 22");
+    Console.WriteLine("+18: entre 22 y 5");
+
+    Console.WriteLine();
+
+    Console.WriteLine("REGLAS DE DURACION POR TIPO");
+    Console.WriteLine("Película: 60 - 180 minutos");
+    Console.WriteLine("Serie: 20 - 90 minutos");
+    Console.WriteLine("Documental: 30 - 120 minutos");
+    Console.WriteLine("Evento en vivo: 30 - 240 minutos");
+
+    Console.WriteLine();
+
+}
+
+
+
