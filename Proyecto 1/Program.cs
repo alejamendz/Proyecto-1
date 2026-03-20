@@ -32,6 +32,10 @@ do
             mostrarReglas();
         break;
 
+        case 3:
+            mostrarEstadisticas();  
+        break;
+
     }
 } while (opcion != 5);
 
@@ -186,8 +190,44 @@ void mostrarReglas()
     Console.WriteLine("Evento en vivo: 30 - 240 minutos");
 
     Console.WriteLine();
-
 }
 
+void mostrarEstadisticas()
+{
+    Console.WriteLine("ESTADISTICAS");
+    Console.WriteLine($"Total evaluados: {totalEvaluados}");
+    Console.WriteLine($"Publicados: {publicados}");
+    Console.WriteLine($"Rechazados: {rechazados}");
+    Console.WriteLine($"En revisión {revision}");
 
+    string principal = "Alto";
+    int mayor = impactoMedio;
+    if (impactoMedio > mayor)
+    {
+        mayor = impactoMedio;
+        principal = "Medio";
+    }
+
+    if (bajoImpacto > mayor)
+    {
+        principal = "Bajo";
+    }
+
+    Console.WriteLine($"Impacto principal: {principal}");
+
+    double porcentaje = 0;
+    if (totalEvaluados > 0)
+    {
+        porcentaje = (publicados * 100.0) / totalEvaluados;
+    }
+
+    Console.WriteLine($"Porcentaje de aprobacion: {porcentaje + "%"}");
+
+    for (int a = 0; a < 3; a++)
+    {
+        Console.WriteLine(". ");
+    }
+    Console.WriteLine();
+
+}
 
