@@ -36,8 +36,12 @@ do
             mostrarEstadisticas();  
         break;
 
+        case 4:
+            reiniciarEstadisticas();
+        break;
     }
 } while (opcion != 5);
+Console.WriteLine("Saliendo del programa...");
 
 
 void evaluarContenido()
@@ -129,16 +133,18 @@ void evaluarContenido()
             valido = 0;
         }
     }
-    if (valido == 0)
+    /*if (valido == 0)
     {
         Console.WriteLine("DECISION FINAL: RECHAZAR");
         rechazados++;
         return;
-    }
+    }*/
 
     if(valido==0)
     {
         Console.WriteLine("Decision final: Rechazar");
+        rechazados++;
+        return;
     }
 
     string impacto = CalcularImpacto(duracion, hora, produccion);
@@ -228,6 +234,19 @@ void mostrarEstadisticas()
         Console.WriteLine(". ");
     }
     Console.WriteLine();
+}
+
+void reiniciarEstadisticas()
+{
+    totalEvaluados = 0;
+    publicados = 0;
+    rechazados = 0; 
+    revision = 0;
+    altoImpacto = 0;
+    impactoMedio = 0;
+    bajoImpacto = 0;
+
+    Console.WriteLine("Estadísticas reiniciadas");
 
 }
 
