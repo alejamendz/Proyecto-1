@@ -230,7 +230,7 @@ void mostrarEstadisticas()
 
     for (int a = 0; a < 3; a++)
     {
-        Console.WriteLine(". ");
+        Console.WriteLine(".");
     }
     Console.WriteLine();
 }
