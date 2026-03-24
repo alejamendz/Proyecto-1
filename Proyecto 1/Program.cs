@@ -1,6 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-
 int publicados = 0;
 int rechazados = 0;
 int revision = 0;
@@ -9,6 +8,11 @@ int impactoMedio = 0;
 int bajoImpacto = 0;
 int totalEvaluados = 0;
 
+
+Console.WriteLine("BIENVENIDO AL SISTEMA DE EVALUACIÓN");
+Console.WriteLine("Presione ENTER para ingresar al menú...");
+Console.ReadLine(); 
+Console.Clear();
 int opcion = 0;
 do
 {
@@ -133,12 +137,6 @@ void evaluarContenido()
             valido = 0;
         }
     }
-    /*if (valido == 0)
-    {
-        Console.WriteLine("DECISION FINAL: RECHAZAR");
-        rechazados++;
-        return;
-    }*/
 
     if(valido==0)
     {
@@ -201,9 +199,13 @@ void mostrarReglas()
 void mostrarEstadisticas()
 {
     Console.WriteLine("ESTADISTICAS");
+
     Console.WriteLine($"Total evaluados: {totalEvaluados}");
+
     Console.WriteLine($"Publicados: {publicados}");
+
     Console.WriteLine($"Rechazados: {rechazados}");
+
     Console.WriteLine($"En revisión {revision}");
 
     string principal = "Alto";
@@ -249,4 +251,3 @@ void reiniciarEstadisticas()
     Console.WriteLine("Estadísticas reiniciadas");
 
 }
-
