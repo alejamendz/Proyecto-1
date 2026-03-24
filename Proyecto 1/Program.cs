@@ -8,11 +8,6 @@ int impactoMedio = 0;
 int bajoImpacto = 0;
 int totalEvaluados = 0;
 
-
-Console.WriteLine("BIENVENIDO AL SISTEMA DE EVALUACIÓN");
-Console.WriteLine("Presione ENTER para ingresar al menú...");
-Console.ReadLine(); 
-Console.Clear();
 int opcion = 0;
 do
 {
@@ -24,25 +19,25 @@ do
     Console.WriteLine("5. Salir");
 
     Console.WriteLine("Seleccione una opcion del menú");
-    opcion =int.Parse(Console.ReadLine());
+    opcion = int.Parse(Console.ReadLine());
 
-    switch(opcion)
+    switch (opcion)
     {
         case 1:
             evaluarContenido();
-        break;
+            break;
 
         case 2:
             mostrarReglas();
-        break;
+            break;
 
         case 3:
-            mostrarEstadisticas();  
-        break;
+            mostrarEstadisticas();
+            break;
 
         case 4:
             reiniciarEstadisticas();
-        break;
+            break;
     }
 } while (opcion != 5);
 Console.WriteLine("Saliendo del programa...");
@@ -53,7 +48,7 @@ void evaluarContenido()
     int tipo;
     int duracion;
     int clasificaicon;
-    int hora=0;
+    int hora = 0;
     int produccion;
 
     int valido = 1;
@@ -67,7 +62,7 @@ void evaluarContenido()
     tipo = int.Parse(Console.ReadLine());
 
     Console.WriteLine("Duracion en minutos: ");
-    duracion= int.Parse(Console.ReadLine());    
+    duracion = int.Parse(Console.ReadLine());
 
     Console.WriteLine("Clasificacion: ");
     Console.WriteLine("1. Todo público");
@@ -76,25 +71,27 @@ void evaluarContenido()
     clasificaicon = int.Parse(Console.ReadLine());
 
     Console.WriteLine("Hora programada (0-23): ");
-    hora= int.Parse(Console.ReadLine());
+    hora = int.Parse(Console.ReadLine());
 
     Console.WriteLine("Nivel de producción:");
     Console.WriteLine("1. Bajo");
     Console.WriteLine("2. Medio");
     Console.WriteLine("3. Alto");
     produccion = int.Parse(Console.ReadLine());
+
+    
     totalEvaluados++;
 
-    if(tipo== 1)
+    if (tipo == 1)
     {
-        if(duracion<60||duracion>180)
+        if (duracion < 60 || duracion > 180)
         {
             valido = 0;
         }
     }
-    else if (tipo== 2) 
+    else if (tipo == 2)
     {
-        if(duracion<20||duracion>90)
+        if (duracion < 20 || duracion > 90)
         {
             valido = 0;
         }
@@ -114,42 +111,43 @@ void evaluarContenido()
         }
     }
 
-    if(clasificaicon==2)
+    if (clasificaicon == 2)
     {
-        if(hora < 6||hora>2)
+        if (hora < 6 || hora > 22) 
         {
             valido = 0;
         }
     }
 
-    if(clasificaicon==3)
+    if (clasificaicon == 3)
     {
-        if(!(hora>=22||hora<=5))
+        if (!(hora >= 22 || hora <= 5))
         {
             valido = 0;
         }
     }
 
-    if(produccion==1)
+    if (produccion == 1)
     {
-        if(clasificaicon==3)
+        if (clasificaicon == 3)
         {
             valido = 0;
         }
     }
 
-    if(valido==0)
+    if (valido == 0)
     {
         Console.WriteLine("Decision final: Rechazar");
+        
         rechazados++;
         return;
     }
 
     string impacto = CalcularImpacto(duracion, hora, produccion);
-    if(impacto=="Alto")
+    if (impacto == "Alto")
     {
         Console.WriteLine("Decision final: Enviar a revision");
-        revision++; 
+        revision++;
     }
     else
     {
@@ -201,24 +199,23 @@ void mostrarEstadisticas()
     Console.WriteLine("ESTADISTICAS");
 
     Console.WriteLine($"Total evaluados: {totalEvaluados}");
-
     Console.WriteLine($"Publicados: {publicados}");
-
     Console.WriteLine($"Rechazados: {rechazados}");
+    Console.WriteLine($"En revisión: {revision}");
 
-    Console.WriteLine($"En revisión {revision}");
+   
+    string principal = "Bajo";
+    int mayor = bajoImpacto;
 
-    string principal = "Alto";
-    int mayor = impactoMedio;
     if (impactoMedio > mayor)
     {
         mayor = impactoMedio;
         principal = "Medio";
     }
 
-    if (bajoImpacto > mayor)
+    if (altoImpacto > mayor)
     {
-        principal = "Bajo";
+        principal = "Alto";
     }
 
     Console.WriteLine($"Impacto principal: {principal}");
@@ -229,7 +226,7 @@ void mostrarEstadisticas()
         porcentaje = (publicados * 100.0) / totalEvaluados;
     }
 
-    Console.WriteLine($"Porcentaje de aprobacion: {porcentaje + "%"}");
+    Console.WriteLine($"Porcentaje de aprobacion: {porcentaje}%");
 
     for (int a = 0; a < 3; a++)
     {
@@ -242,12 +239,11 @@ void reiniciarEstadisticas()
 {
     totalEvaluados = 0;
     publicados = 0;
-    rechazados = 0; 
+    rechazados = 0;
     revision = 0;
     altoImpacto = 0;
     impactoMedio = 0;
     bajoImpacto = 0;
 
     Console.WriteLine("Estadísticas reiniciadas");
-
 }
