@@ -159,7 +159,7 @@ void evaluarContenido()
 
 string CalcularImpacto(int duracion, int hora, int produccion)
 {
-    if (produccion == 3 ||  duracion > 120 || (hora >= 20 && hora <= 23))
+    if (produccion == 3 ||  duracion > 120 ||  (hora >= 20 && hora <= 23))
     {
         altoImpacto++;
         return "Alto";
