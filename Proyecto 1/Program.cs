@@ -9,7 +9,7 @@ int bajoImpacto = 0;
 int totalEvaluados = 0;
 
 Console.WriteLine("BIENVENIDO A MEDIACHECK EL SISTEMA DE EVALUACIÓN");
-Console.WriteLine("Presione ENTER para ingresar al menú");
+Console.WriteLine("Presione ENTER para ingresar al menu");
 Console.ReadLine();
 
 int opcion = 0;
