@@ -8,6 +8,10 @@ int impactoMedio = 0;
 int bajoImpacto = 0;
 int totalEvaluados = 0;
 
+Console.WriteLine("BIENVENIDO A MEDIACHECK EL SISTEMA DE EVALUACIÓN");
+Console.WriteLine("Presione ENTER para ingresar al menú");
+Console.ReadLine();
+
 int opcion = 0;
 do
 {
@@ -79,7 +83,6 @@ void evaluarContenido()
     Console.WriteLine("3. Alto");
     produccion = int.Parse(Console.ReadLine());
 
-    
     totalEvaluados++;
 
     if (tipo == 1)
@@ -113,7 +116,7 @@ void evaluarContenido()
 
     if (clasificaicon == 2)
     {
-        if (hora < 6 || hora > 22) 
+        if (hora < 6 || hora > 22)
         {
             valido = 0;
         }
@@ -137,8 +140,7 @@ void evaluarContenido()
 
     if (valido == 0)
     {
-        Console.WriteLine("Decision final: Rechazar");
-        
+        Console.WriteLine("Decision final: Recharzar");
         rechazados++;
         return;
     }
@@ -159,7 +161,7 @@ void evaluarContenido()
 
 string CalcularImpacto(int duracion, int hora, int produccion)
 {
-    if (produccion == 3 ||  duracion > 120 ||  (hora >= 20 && hora <= 23))
+    if (produccion == 3 || duracion > 120 || (hora >= 20 && hora <= 23))
     {
         altoImpacto++;
         return "Alto";
@@ -203,7 +205,6 @@ void mostrarEstadisticas()
     Console.WriteLine($"Rechazados: {rechazados}");
     Console.WriteLine($"En revisión: {revision}");
 
-   
     string principal = "Bajo";
     int mayor = bajoImpacto;
 
@@ -230,7 +231,7 @@ void mostrarEstadisticas()
 
     for (int a = 0; a < 3; a++)
     {
-        Console.WriteLine(".");
+        Console.WriteLine(". ");
     }
     Console.WriteLine();
 }
